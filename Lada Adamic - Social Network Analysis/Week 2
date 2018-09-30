@@ -1,0 +1,70 @@
+
+2A - Introduction to random graph models
+2B - random graphs and alternative models
+
+
+Edros-Renyi - simplest network model
+	nodes connect at random
+	network is undirected
+
+	there is no hubs in such network
+
+	parameters:
+		N - number of nodes
+		p - probability that any two nodes are connected
+		M - total number of edges
+
+	Degree distribution
+		how many nodes in the netwrk have no neighbours, how many have 1 neighbour, how many 2, etc
+		what is the probability that a node has 0, 1, 2, 3, … edges?
+
+
+		each node has (N-1) tries to get edges
+		each try is a success with probability p
+		the binomial distribution gives us the probability that na node has degree k
+
+		B(N-1; k; p) = ((N-1) [symbol Newtona] k) * (p^k) * ((1-p)^(N-1-k))
+
+
+
+		choosing k items out of (n-1)
+			(n-1)! / (k! * (n-1-k)!)
+
+	
+	z - average number of friends
+	friends at distance l = z^l
+
+	average shortest path = log N / log z
+
+	Edros-Renyi network can grow to be vary large but nodes will be just few hops apart
+
+Introduction model
+	prob-link - p - probability of connection of any to nodes (like in ER)
+	prob-intro - probability that the other node is selected amoing one of our friends' friends (not completely at random)
+
+	relative to ER:
+		· more edges
+		· more closed triads (trójkącik z trzech nodów)
+		· longer average shortest path
+		· different degree distribution (more uneven degree)
+		· size of the giant component (smaller at low p)
+
+
+Static Geografical model
+	nodes have some position
+	it infulence probability of connections
+
+Random encouter
+	like static geografical model
+	but it's not static
+	nodes are moving around - if thet bump each other they create connection
+
+
+Growth model
+	instead of starting with fixed number of nodes they are added over time
+
+
+
+sum-up
+	in some instances ther ER is plausible (prawdopodobny)
+	if dynamics are different, ER model may be a poor fit

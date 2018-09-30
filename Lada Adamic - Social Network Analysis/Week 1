@@ -1,0 +1,60 @@
+Lada Adamic - Social Network Analysis
+Notatki z kursu
+
+1A - wstęp
+1B - oprogramowanie
+	Alternatywy:
+		NetworkX - https://networkx.github.io/
+		SNA package for R
+		SoNIA
+
+
+	Gephi
+		https://gephi.org/users/download/
+
+1C - terminy i dobre nawyki
+	Przy wizuwalizacji grafów:
+		· unikać krzyżujących się kreawędzi
+		· równoważyć odległości między węzłami (ale to zależy, bo niekiedy odległosć może mówić jak mocno węzły są ze sobą powiązane)
+		· uważać, aby węzeł nie nachodził na krawędzie z nim nie związane
+
+	Pojęcia:
+		Degree - (stopień węzła) ile krawędzi wchodzi/wychodzi z węzła
+		
+		Edges:
+			Directed (also arcs, links) A → B
+			Undirected A ↔ B, A – B
+
+		Edge attributes
+			weight (e.g. frequency of communication) - może być dodatnie lub ujemne (np. zaufanie, wrogość)
+			ranking (best friend, second best friend)
+			type (friend, relative, co-worker)
+			properties depending on the srtucture of the rest of the graph (e.g. betweeness)
+
+		Sposoby reprezentacji grafu:
+			Macierz sąsiedztwa (Aij = 1 jeżeli jest krawędź w węzła i do j; 
+									  0 jeżeli nie ma krewędzi z i do j)
+			Lista krawędzi
+			Lista sąsiedztwa
+				Lepsza gdy 
+					· wielka sieć
+					· rzadka sieć (wiele węzłów, mało krawędzi - unikamy wielu 0 w macierzy)
+
+		indegree - liczba wchodzących krawędzi
+		outdegree - liczba wychodzących krawędzi
+		Degree: indegree + outdegree
+
+		Strongly connected component - you can go from any node to any node within the strongly connected component
+			Składowa silnie spójna - https://pl.wikipedia.org/wiki/Sk%C5%82adowa_silnie_sp%C3%B3jna
+				istnieje ścieżka między dowolnymi dwoma węzłami komponentu
+				silną spójność rozpatruje się raczej dla grafu skierowanego bo dla grafu nieskierowanego każda spójna składowa będzie silnie spójna.
+
+		Weakly connected component (w grafie skierowanym) - są jakieś przejścia między wszystkimi węzłami w komponencie
+			W grafie nieskierowanym - po prostu connected component (graf spójny)
+
+		Giant component - largest component in the graph
+
+
+1D - Gephi demo
+	
+	Pokazane jak korzystać z Gephi oraz podany przykład do czego przydaje się „Strongly connected komponent”
