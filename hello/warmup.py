@@ -4,7 +4,7 @@ from collections import Counter
 import matplotlib.pyplot as plt
 
 
-def main():
+def task1():
 	# generate Erdős-Rényi network: number of vertices=100, probability of edges=0.05
 	g = ig.Graph.Erdos_Renyi(n=100, p=0.05, directed=False)
 
@@ -33,8 +33,14 @@ def main():
 		print(f'({v.index}: {d}), ', end='')
 
 	histogram(Counter(g.degree()))
+
+	# number of clusters (connected components)
+	print(g.clusters())
 	
 
+def task2():
+	# generate Barabási-Albert graph with 1000 vertices
+	g = ig.Graph.Barabasi(1000)
 
 def histogram(counter):
 	items = sorted(counter.items(), key=lambda x: x[0])
@@ -49,7 +55,8 @@ def histogram(counter):
 
 
 if __name__ == '__main__':
-	main()
+	# task1()
+	task2()
 
 
 
