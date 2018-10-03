@@ -36,11 +36,40 @@ def task1():
 
 	# number of clusters (connected components)
 	print(g.clusters())
+
+	# visualize graph, use Page Range to determine vertex size\
+	vertex_size = [rank * 10**3 for rank in g.pagerank()]
+	ig.plot(g, layout=g.layout('fr'), vertex_size=vertex_size)
 	
 
 def task2():
 	# generate Barabási-Albert graph with 1000 vertices
 	g = ig.Graph.Barabasi(1000)
+
+	# visualize graph with Fruchterman-Reingold layout
+	ig.plot(g, layout=g.layout('fr'))
+
+	# find vertex with the highest betweenness centrality 
+	ebs = g.betweenness()
+	max_eb = max(ebs)
+	for i, eb in enumerate(ebs):
+		if eb == max_eb:
+			print(g.vs[i].index)
+
+	# find diameter of the graph
+	print(f'diameter: {g.diameter()}')
+
+	# describe differences between Barabási-Albert and Erdős-Rényi graph models
+	#
+	#
+	#
+
+
+def task3():
+	pass
+
+
+
 
 def histogram(counter):
 	items = sorted(counter.items(), key=lambda x: x[0])
