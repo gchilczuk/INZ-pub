@@ -1,0 +1,102 @@
+### START ###		random
+initial vertex id: 31
+
+number of active vertives: 1
+number of active vertives: 44
+number of active vertives: 138
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+### END ###
+
+
+### START ###		random
+initial vertex id: 53
+
+number of active vertives: 1
+number of active vertives: 44
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+### END ###
+
+
+### START ###		max betweenness
+initial vertex id: 44
+
+number of active vertives: 1
+number of active vertives: 137
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+### END ###
+
+
+### START ###		min betweenness
+initial vertex id: 0
+
+number of active vertives: 1
+number of active vertives: 3
+number of active vertives: 44
+number of active vertives: 140
+number of active vertives: 140
+number of active vertives: 140
+number of active vertives: 140
+number of active vertives: 140
+number of active vertives: 140
+number of active vertives: 140
+number of active vertives: 140
+### END ###
+
+
+### START ###		max pagerank
+initial vertex id: 16
+
+number of active vertives: 1
+number of active vertives: 130
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+number of active vertives: 139
+### END ###
+
+
+### START ###		min pagerank
+initial vertex id: 28
+
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+number of active vertives: 1
+### END ###
+
+

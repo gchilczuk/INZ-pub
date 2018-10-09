@@ -1,4 +1,5 @@
 from collections import Counter
+from itertools import chain
 import matplotlib.pyplot as plt
 import random
 
@@ -11,7 +12,7 @@ def task1():
 
     # print graph summary; is graph weighted?
     ig.summary(g)  # something like: IGRAPH U--- 100 xx --
-    # there is four-character code at the beginnig; weighted graph would have 'W' at third place
+    # there is four-character code at the beginning; weighted graph would have 'W' at third place
 
     # list all vertices and edges
     print('Vertices:')
@@ -22,7 +23,7 @@ def task1():
     for edge in g.es:
         print(f'edge {edge.index}; attributes: {edge.attributes()}')
 
-    # set wegights for all edges at random in range [0.1, 1]
+    # set weights for all edges at random in range [0.1, 1]
     g.es['weight'] = [(random.randint(10**4, 10**6))/10**6 for _ in range(g.ecount())]
 
     # print graph summary; is graph weighted?
@@ -62,16 +63,21 @@ def task2():
 
     # describe differences between Barabási-Albert and Erdős-Rényi graph models
     #
+    # Erdős-Rényi is the simplest network model, nodes are connected at random,
+    # network is undirected, there are no hubs in such network.
+    # Edros-Renyi network can grow to be very large but nodes will be just few hops apart
     #
-    #
+    # In Barabási-Albert model, when a new vertex join network
+    # probability of creation of connection to other vertices is proportional to their degree.
+    # In such a network it is easy to identify hubs - nodes, the degree of which is high compared to others.
 
 
 def task3():
     # read data, take columns 0 and 1
     file = pd.read_csv('./manufacturing/manufacturing.csv', sep=';', usecols=[0,1])[1:]
     
-    # decrease indexes beacuse vertices in the Graph are indexed form 0
-    file -= 1  
+    # decrease indexes because vertices in the Graph are indexed form 0
+    file -= 1 
     
     #create Graph
     edges = list(zip(file.Sender, file.Recipient))
@@ -80,31 +86,49 @@ def task3():
     # remove self-loops and multiple edges
     g.simplify()
 
-    # make sure that there is 167 vertices and 5783 edges
+    # make sure that there are 167 vertices and 5783 edges
     assert len(g.vs) == 167
     assert len(g.es) == 5783
 
     # information spreading
-    g.vs['activated'] = False
-    # vertex_size = [rank * 10**3 for rank in g.pagerank()]
-    ig.plot(g, layout=g.layout('kk'))
-
-def spdreading_experiment(graph, initial):
-        random.choice(g.vs)['activated'] = True
-        for _ in range(2):
-            active = g.vs.select(activated=True)
-            print('a1', len(active))
-            print([a.index for a in active])
-            neighbors = g.vs.select(*g.neighborhood(vertices=[v.index for v in active], mode='out'))
-            print('n1', len(neighbors))
-            neighbors['activated'] = True
-            print('n2', [a.index for a in neighbors])
-            print('r',len(g.vs.select(activated=True)), end='\n\n')
+    betweenness = g.betweenness()
+    pagerank = g.pagerank()
+    # random vertex
+    spdreading_experiment(g, random.choice(g.vs).index, 'random')
+    spdreading_experiment(g, random.choice(g.vs).index, 'random')
+    # max betweenness
+    spdreading_experiment(g, betweenness.index(max(betweenness)), 'max betweenness')
+    # min betweenness
+    spdreading_experiment(g, betweenness.index(min(betweenness)), 'min betweenness')
+    # max pagerank
+    spdreading_experiment(g, pagerank.index(max(pagerank)), 'max pagerank')
+    # min pagerank
+    spdreading_experiment(g, list(reversed(pagerank)).index(min(pagerank)), 'min pagerank')
 
 
+def spdreading_experiment(graph, initial_id, initial_comment=''):
+        g = graph.copy()
 
+        with open('experiment_results', 'a') as output:
+            g.vs['activated'] = False
+            g.vs[initial_id]['activated'] = True
+            for v in g.vs: v['id'] = v.index
 
+            output.write(f'### START ###\t\t{initial_comment}\n'
+                f'initial vertex id: {initial_id}\n\n'
+                'number of active vertives: 1\n')
+            
+            for i in range(10):
+                active = g.vs.select(activated=True)
+                active_ids = [v.index for v in active]
+                
+                neighbors_ids = set(chain(*[g.neighborhood(vertices=_id, mode=ig.OUT) for _id in active_ids]))
+                neighbors = g.vs.select(neighbors_ids).select(activated=False)
+                neighbors['activated'] = True
 
+                output.write(f'number of active vertives: {len(neighbors_ids)}\n')
+
+            output.write('### END ###\n\n\n')
 
 
 def histogram(counter):
@@ -120,8 +144,8 @@ def histogram(counter):
 
 
 if __name__ == '__main__':
-    # task1()
-    # task2()
+    task1()
+    task2()
     task3()
 
 

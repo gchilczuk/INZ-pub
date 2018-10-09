@@ -1,0 +1,25 @@
+Dataset description:
+
+History of internal e-mail communication (sender, recipient, datetime)
+between employees of a mid-sized manufacturing company. Multiple recipients
+of the same e-mail (To, CC, BCC) are represented as separate rows without
+distinguishing the recipient type. The period covered are nine full months
+of 2010 starting from 2010-01-01 to 2010-09-30 (event dates in local time).
+
+More details about this dataset:
+http://www.ii.pwr.wroc.pl/~michalski/index.php?content=datasets#manufacturing
+
+==========================
+Citation:
+
+When using this dataset, please cite:
+
+Michalski, Radosław and Palus, Sebastian, and Kazienko, Przemysław: Matching Organizational Structure and Social Network Extracted from Email Communication. Lecture Notes in Business Information Processing LNBIP, vol. 87, pp. 197-206, Springer, Berlin Heidelberg (2011)
+
+or use the included BibTeX file (michalski2011.bib).
+
+==========================
+Contact:
+
+e-mail: radoslaw.michalski <at> pwr.wroc.pl
+web: http://www.ii.pwr.wroc.pl/~michalski
